@@ -1,0 +1,16 @@
+containers:
+  c1:
+    image: alpine
+    command: /bin/sleep 300000
+    ports:
+      - 10000
+  c2:
+    image: alpine
+    command: sh -c "ping $C1_PORT_10000_TCP_ADDR"
+    links:
+      - c1
+  c3:
+    image: alpine
+    command: sh -c "ping $C1_PORT_10000_TCP_ADDR"
+    links:
+      - c1
